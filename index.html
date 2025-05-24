@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>INFO PAYMENT</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #5f2c82 0%, #49a09d 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .container {
+    background: linear-gradient(145deg, #434343, #232526);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    width: 380px;
+    padding: 30px 30px 45px 30px;
+    position: relative;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+    text-shadow: 0 0 8px #89c9f4;
+  }
+
+  .payment-info {
+    background: linear-gradient(135deg, #3a86ff 0%, #6f79f7 100%);
+    border-radius: 14px;
+    padding: 18px 20px 25px 20px;
+    box-shadow: inset 0 0 15px #9ed4fa, 0 6px 15px rgba(58,134,255,0.6);
+    margin-bottom: 35px;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .payment-info:hover {
+    box-shadow: inset 0 0 20px #a6e1ff, 0 10px 22px rgba(58,134,255,0.9);
+  }
+
+  .payment-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #d1eaff;
+    letter-spacing: 1.7px;
+    text-shadow: 0 0 6px #a3cffd;
+    margin-bottom: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .payment-number {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 2.3px;
+    color: #edf4ff;
+    background: linear-gradient(45deg, #89c9f4, #c9d6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 7px rgba(0,0,0,0.15);
+    max-width: 100%;
+    word-break: break-word;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .copy-btn {
+    background: linear-gradient(135deg, #0abde3, #0984e3);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(10, 189, 227, 0.8);
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+    min-width: 110px;
+    user-select: none;
+    letter-spacing: 1px;
+    align-self: center;
+  }
+
+  .copy-btn:hover {
+    background: linear-gradient(135deg, #0984e3, #0abde3);
+    box-shadow: 0 6px 20px rgba(10, 189, 227, 1);
+  }
+
+  .copy-btn:active {
+    transform: scale(0.96);
+  }
+
+  .note {
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #a0bbd9;
+    letter-spacing: 1.5px;
+    margin-top: 40px;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Informasi Pembayaran">
+    <h1>INFO PAYMENT</h1>
+
+    <section class="payment-info" aria-label="Metode pembayaran Dana">
+      <div class="payment-title">DANA</div>
+      <div class="payment-number" id="paymentNumberDANA" title="Nomor Payment Dana">089517170254</div>
+      <button class="copy-btn" data-copy-target="paymentNumberDANA" aria-label="Salin nomor pembayaran Dana">Copy</button>
+    </section>
+
+    <section class="payment-info" aria-label="Metode pembayaran Gopay">
+      <div class="payment-title">GOPAY</div>
+      <div class="payment-number" id="paymentNumberGOPAY" title="Nomor Payment Gopay">089517179254</div>
+      <button class="copy-btn" data-copy-target="paymentNumberGOPAY" aria-label="Salin nomor pembayaran Gopay">Copy</button>
+    </section>
+
+    <section class="payment-info" aria-label="Metode pembayaran Shopee Pay">
+      <div class="payment-title">Shopee Pay</div>
+      <div class="payment-number" id="paymentNumberSHOPPEE" title="Nomor Payment Shopee Pay">085241505625</div>
+      <button class="copy-btn" data-copy-target="paymentNumberSHOPPEE" aria-label="Salin nomor pembayaran Shopee Pay">Copy</button>
+    </section>
+
+    <section class="payment-info" aria-label="Metode pembayaran Ovo">
+      <div class="payment-title">OVO</div>
+      <div class="payment-number" id="paymentNumberOVO" title="Nomor Payment Ovo">082347768528</div>
+      <button class="copy-btn" data-copy-target="paymentNumberOVO" aria-label="Salin nomor pembayaran Ovo">Copy</button>
+    </section>
+
+    <p class="note" aria-live="polite">ALL TRANSAKSI NO REFF</p>
+  </div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-copy-target');
+      const paymentText = document.getElementById(targetId).textContent;
+      navigator.clipboard.writeText(paymentText).then(() => {
+        this.textContent = 'Copied!';
+        this.disabled = true;
+        setTimeout(() => {
+          this.textContent = 'Copy';
+          this.disabled = false;
+        }, 2000);
+      }).catch(() => {
+        alert('Gagal menyalin nomor! Silakan salin secara manual.');
+      });
+    });
+  });
+</script>
+</body>
+</html>
