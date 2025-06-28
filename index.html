@@ -145,7 +145,7 @@
                     alert('Silakan masukkan nama Anda terlebih dahulu.');
                     return;
                 }
-                const saweriaUsername = 'turzxd'; // GANTI DENGAN USERNAME SAWERIA ANDA
+                const saweriaUsername = 'TurzStore'; // GANTI DENGAN USERNAME SAWERIA ANDA
                 const message = `Pembelian ${currentProduct.name} - oleh ${getEl('customer-name').value}`;
                 const saweriaURL = `https://saweria.co/${saweriaUsername}?amount=${currentProduct.price}&msg=${encodeURIComponent(message)}`;
                 window.location.href = saweriaURL;
